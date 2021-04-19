@@ -72,7 +72,7 @@ C R E D I T S
 > ORIGINAL DUKE NUKEM 3D ARTWORK
   (C) 1996 3D Realms
 
-> BSDIFF/BSPATCH
+> BSPATCH
   Timotheus Pokorra (https://www.pokorra.de/coding/bsdiff.html)
   Original code: Colin Percival
 
