@@ -3,7 +3,7 @@
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                        Author: NightFright ^| Version: 1.2
+@echo                       Author: NightFright ^| Version: 1.21
 @echo            ==========================================================              
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -57,8 +57,10 @@ cls
 @echo PROGRESS: ▓▓▒▒▒▒▒▒▒▒  20%%
 @echo STATUS: Copying CON files...
 robocopy %src% %temp% *.con /nfl /ndl /njh /njs /nc /ns /np
-del %temp%\user.con
+del %temp%\USER.CON
+del %temp%\GAME.CON
 ren %temp%\USER_FIX.CON USER.CON
+ren %temp%\GAME_FIX.CON GAME.CON
 ping -n 2 localhost >nul
 
 cls

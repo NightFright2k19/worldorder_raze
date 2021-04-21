@@ -4,7 +4,7 @@
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                    Version: 1.2 / April 19, 2021
+                                   Version: 1.21 / April 21, 2021
 
 
 ================================================================================================
@@ -96,16 +96,20 @@ L I N K S
 C H A N G E L O G
 ================================================================================================
 
+v1.21 / 2021-04-21
+------------------
+> Missing pickup message for keycards fixed
+
 v1.2 / 2021-04-19
 -----------------
-> worldorder.bat: Added optional copying/conversion of duke3d.grp
+> Optional copying/conversion of duke3d.grp added
 
 v1.1 / 2021-04-18
 -----------------
 > Now requires Raze v1.0.2 or newer
-> Worldorder.grpinfo, worldorder_wt.grpinfo and worldorder.def removed
-> worldorder.bat: Progress bar added; Duke3D version selection and CRC32 check removed;
-                  script now closes on its own
+> Grpinfo files and worldorder.def removed
+> Progress bar added; Duke3D version selection and CRC32 check removed; 
+  script now closes on its own
 
 v1.0 / 2021-04-12
 -----------------
