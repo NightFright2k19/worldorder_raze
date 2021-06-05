@@ -4,7 +4,7 @@
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                   Version: 1.21 / April 21, 2021
+                                     Version: 1.3 / June 5, 2021
 
 
 ================================================================================================
@@ -20,10 +20,10 @@ Features:
 ---------
 > "Alien World Order" maps
 > World Tour CONs, including the Firefly enemy, Incinerator boss and new minibosses
-> 8-bit parallax skies
+> 8-bit parallax skies + skyboxes (ep.5 only)
 > Lee Jackson's OGG music (ep.5 only)
 > New Duke voice acting (ep.5 only)
-> Not included: Maps/music/Duketalk for ep.1-4, 32-bit skyboxes, dev commentaries, normalmaps
+> Not included: Maps/music/Duketalk for ep.1-4, ep.1-4 skyboxes, dev commentaries, normalmaps
 
 
 ================================================================================================
@@ -95,6 +95,10 @@ L I N K S
 ================================================================================================
 C H A N G E L O G
 ================================================================================================
+
+v1.3 / 2021-06-05
+-----------------
+> Ep.5 skyboxes added
 
 v1.21 / 2021-04-21
 ------------------

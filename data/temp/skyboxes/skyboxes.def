@@ -1,0 +1,80 @@
+skybox
+{
+   tile 5412 pal 0 artquality
+   back    "skyboxes/PARIS/PARIS_FR.tga"
+   right   "skyboxes/PARIS/PARIS_RT.tga"
+   front   "skyboxes/PARIS/PARIS_BK.tga"
+   left    "skyboxes/PARIS/PARIS_LF.tga"
+   top     "skyboxes/PARIS/PARIS_UP.tga"
+   bottom  "skyboxes/PARIS/PARIS_DN.tga"
+}
+skybox
+{
+   tile 5420 pal 0 artquality
+   back    "skyboxes/LONDON/LONDON_FR.tga"
+   right   "skyboxes/LONDON/LONDON_RT.tga"
+   front   "skyboxes/LONDON/LONDON_BK.tga"
+   left    "skyboxes/LONDON/LONDON_LF.tga"
+   top     "skyboxes/LONDON/LONDON_UP.tga"
+   bottom  "skyboxes/LONDON/LONDON_DN.tga"
+}
+skybox
+{
+   tile 5450 pal 0 artquality
+   back    "skyboxes/MOSCOW/MOSCOW_FR.tga"
+   right   "skyboxes/MOSCOW/MOSCOW_RT.tga"
+   front   "skyboxes/MOSCOW/MOSCOW_BK.tga"
+   left    "skyboxes/MOSCOW/MOSCOW_LF.tga"
+   top     "skyboxes/MOSCOW/MOSCOW_UP.tga"
+   bottom  "skyboxes/MOSCOW/MOSCOW_DN.tga"
+}
+skybox
+{
+   tile 5540 pal 0 artquality
+   back    "skyboxes/PYRAMIDS/PYRAMIDS_FR.tga"
+   right   "skyboxes/PYRAMIDS/PYRAMIDS_RT.tga"
+   front   "skyboxes/PYRAMIDS/PYRAMIDS_BK.tga"
+   left    "skyboxes/PYRAMIDS/PYRAMIDS_LF.tga"
+   top     "skyboxes/PYRAMIDS/PYRAMIDS_UP.tga"
+   bottom  "skyboxes/PYRAMIDS/PYRAMIDS_DN.tga"
+}
+skybox
+{
+   tile 5548 pal 0 artquality
+   back    "skyboxes/AMSTERDAM/AMSTERDAM_FR.tga"
+   right   "skyboxes/AMSTERDAM/AMSTERDAM_RT.tga"
+   front   "skyboxes/AMSTERDAM/AMSTERDAM_BK.tga"
+   left    "skyboxes/AMSTERDAM/AMSTERDAM_LF.tga"
+   top     "skyboxes/AMSTERDAM/AMSTERDAM_UP.tga"
+   bottom  "skyboxes/AMSTERDAM/AMSTERDAM_DN.tga"
+}
+skybox
+{
+   tile 5556 pal 0 artquality
+   back    "skyboxes/HOLLYWOOD/HOLLYWOOD_FR.tga"
+   right   "skyboxes/HOLLYWOOD/HOLLYWOOD_RT.tga"
+   front   "skyboxes/HOLLYWOOD/HOLLYWOOD_BK.tga"
+   left    "skyboxes/HOLLYWOOD/HOLLYWOOD_LF.tga"
+   top     "skyboxes/HOLLYWOOD/HOLLYWOOD_UP.tga"
+   bottom  "skyboxes/HOLLYWOOD/HOLLYWOOD_DN.tga"
+}
+skybox
+{
+   tile 5720 pal 0 artquality
+   back    "skyboxes/GOLDENGATE/GOLDENGATE_FR.tga"
+   right   "skyboxes/GOLDENGATE/GOLDENGATE_RT.tga"
+   front   "skyboxes/GOLDENGATE/GOLDENGATE_BK.tga"
+   left    "skyboxes/GOLDENGATE/GOLDENGATE_LF.tga"
+   top     "skyboxes/GOLDENGATE/GOLDENGATE_UP.tga"
+   bottom  "skyboxes/GOLDENGATE/GOLDENGATE_DN.tga"
+}
+skybox
+{
+   tile 5814 pal 0 artquality
+   back    "skyboxes/COLOSSEUM/COLOSSEUM_FR.tga"
+   right   "skyboxes/COLOSSEUM/COLOSSEUM_RT.tga"
+   front   "skyboxes/COLOSSEUM/COLOSSEUM_BK.tga"
+   left    "skyboxes/COLOSSEUM/COLOSSEUM_LF.tga"
+   top     "skyboxes/COLOSSEUM/COLOSSEUM_UP.tga"
+   bottom  "skyboxes/COLOSSEUM/COLOSSEUM_DN.tga"
+}
