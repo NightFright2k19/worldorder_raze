@@ -3,7 +3,7 @@
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                       Author: NightFright ^| Version: 1.31
+@echo                       Author: NightFright ^| Version: 1.4
 @echo            ==========================================================              
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -19,19 +19,20 @@ set raze=D:\Raze
 @echo Enter your Steam source directory or press [ENTER] for default (%steam%):
 set /p steam=
 @echo STEAM DIRECTORY SET!
-@echo.
-@echo Enter your Raze target directory or press [ENTER] for default (%raze%):
-set /p raze=
-@echo RAZE DIRECTORY SET!
 set src="%steam%\steamapps\common\Duke Nukem 3D Twentieth Anniversary World Tour"
-set dest="%raze%\data"
+set dest="%cd%\data"
 set temp="%dest%\temp"
 @echo.
 choice /c YN /n /m "Copy over duke3d.grp from World Tour and convert it to Atomic [Y/N]?"
-if errorlevel 2 goto StartCopy
-if errorlevel 1 goto Conversion
+if errorlevel 2 goto MapPatch
+if errorlevel 1 goto Conversion1
 
-:Conversion
+:MapPatch
+choice /c YN /n /m "Apply patch for 'Prima Arena' (E5L8.map) to add cut sections [Y/N]?"
+if errorlevel 2 goto StartCopy
+if errorlevel 1 goto Conversion2
+
+:Conversion1
 cls
 @echo.
 @echo Please confirm process 'bspatch.exe' if a UAC notification appears.
@@ -42,6 +43,20 @@ ren DUKE3D.GRP worldtour.grp
 bspatch worldtour.grp duke3d.grp wtatomic.bdf
 del %dest%\worldtour.grp
 @echo Duke3d.grp copied, Atomic patch applied.
+ping -n 3 localhost >nul
+@echo.
+goto MapPatch
+
+:Conversion2
+cls
+@echo Please confirm process 'bspatch.exe' if a UAC notification appears.
+ping -n 6 localhost >nul
+robocopy %src%\maps %dest% E5L8.map /nfl /ndl /njh /njs /nc /ns /np
+cd %dest%
+bspatch E5L8.map E5L8A.map e5l8_uncut.bdf
+move E5L8A.map %temp%\maps >nul
+move E5L8.map %temp%\maps\E5L8B.map >nul
+@echo E5L8 patch applied. Backup saved as E5L8B.map.
 ping -n 3 localhost >nul
 goto StartCopy
 
@@ -76,6 +91,10 @@ cls
 @echo PROGRESS: ▓▓▓▓▒▒▒▒▒▒  40%%
 @echo STATUS: Copying maps...
 robocopy %src%\maps %temp%\maps E5*.map /nfl /ndl /njh /njs /nc /ns /np
+if exist %temp%\maps\E5L8A.map (
+   del %temp%\maps\E5L8.map
+   ren "%temp%\maps\E5L8A.map" "E5L8.map"
+)
 ping -n 2 localhost >nul
 
 cls
@@ -120,8 +139,7 @@ cls
 @echo STATUS: Deleting temporary files...
 rmdir %temp% /s /q
 del %dest%\*.exe
-del %dest%\*.dll
-del %dest%\wtatomic.bdf
+del %dest%\*.bdf
 ping -n 2 localhost >nul
 
 cls
