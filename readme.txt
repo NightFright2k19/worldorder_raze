@@ -39,7 +39,8 @@ R E Q U I R E M E N T S
 I N S T A L L A T I O N
 ================================================================================================
 
-1) Unpack this zipfile (worldorder_raze.zip) into your Raze installation folder.
+1) Unpack this zipfile (worldorder_raze.zip) into your Raze installation folder, then
+   launch worldorder.bat.
 
 2) Specify your Steam directory when prompted and confirm with "Enter". No need for any input 
    if you installed Steam in the default directory. Otherwise use root directory only, 
