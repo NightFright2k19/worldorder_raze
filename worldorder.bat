@@ -3,7 +3,7 @@
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                       Author: NightFright ^| Version: 1.4
+@echo                       Author: NightFright ^| Version: 1.41
 @echo            ==========================================================              
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -14,21 +14,21 @@
 @echo.
 @echo.
 
-set steam=C:\Program Files (x86)\Steam
-set raze=D:\Raze
-@echo Enter your Steam source directory or press [ENTER] for default (%steam%):
-set /p steam=
-@echo STEAM DIRECTORY SET!
+(for /f "usebackq tokens=1,2,*" %%a in (`reg query "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam" /v UninstallString`) do set SteamPath32=%%c) >nul 2>&1
+(for /f "usebackq tokens=1,2,*" %%a in (`reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam" /v UninstallString`) do set SteamPath64=%%c) >nul 2>&1
+set steam=%SteamPath64%%SteamPath32%
+set steam=%steam:\uninstall.exe=%
 set src="%steam%\steamapps\common\Duke Nukem 3D Twentieth Anniversary World Tour"
-set dest="%cd%\data"
-set temp="%dest%\temp"
+set dest=%cd%\data
+set temp=%dest%\temp
 @echo.
-choice /c YN /n /m "Copy over duke3d.grp from World Tour and convert it to Atomic [Y/N]?"
+
+choice /c YN /n /m "<OPTION 1/2> Copy over duke3d.grp from World Tour and convert it to Atomic [Y/N]?"
 if errorlevel 2 goto MapPatch
 if errorlevel 1 goto Conversion1
 
 :MapPatch
-choice /c YN /n /m "Apply patch for 'Prima Arena' (E5L8.map) to add cut sections [Y/N]?"
+choice /c YN /n /m "<OPTION 2/2> Apply patch for 'Prima Arena' (E5L8.map) to add cut sections [Y/N]?"
 if errorlevel 2 goto StartCopy
 if errorlevel 1 goto Conversion2
 
@@ -49,6 +49,7 @@ goto MapPatch
 
 :Conversion2
 cls
+@echo.
 @echo Please confirm process 'bspatch.exe' if a UAC notification appears.
 ping -n 6 localhost >nul
 robocopy %src%\maps %dest% E5L8.map /nfl /ndl /njh /njs /nc /ns /np

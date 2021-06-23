@@ -4,7 +4,7 @@
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                    Version: 1.4 / June 22, 2021
+                                    Version: 1.41 / June 22, 2021
 
 
 ================================================================================================
@@ -42,11 +42,7 @@ I N S T A L L A T I O N
 1) Unpack this zipfile (worldorder_raze.zip) into your Raze installation folder, then
    launch worldorder.bat.
 
-2) Specify your Steam directory when prompted and confirm with "Enter". No need for any input 
-   if you installed Steam in the default directory. Otherwise use root directory only, 
-   e.g. "C:\Program Files (x86)\Steam".
-
-3) You will be given two [Y]es/[N]o choices now:
+2) You will be given two [Y]es/[N]o choices now:
    a) Choose whether you want to copy over duke3d.grp from World Tour and convert it to 
       Atomic Edition (recommended if you don't own Atomic Edition). There might be a UAC
       popup during this process which you need to confirm.
@@ -56,10 +52,10 @@ I N S T A L L A T I O N
       a UAC popup during this process which you need to confirm.
       The original map will be saved as E5L8B.map in case you want to revert manually later.
 
-4) You can (and should) uninstall World Tour on Steam at this point. Also the script
+3) You can (and should) uninstall World Tour on Steam at this point. Also the script
    file itself (worldorder.bat) is no longer needed.
 
-5) Launch Raze (raze.exe). In the selection menu, choose "Alien World Order (worldorder)".
+4) Launch Raze (raze.exe). In the selection menu, choose "Alien World Order (worldorder)".
 
 
 ================================================================================================
@@ -104,6 +100,10 @@ L I N K S
 ================================================================================================
 C H A N G E L O G
 ================================================================================================
+
+v1.41 / 2021-06-23
+------------------
+> Choosing source dir during installation is also no longer necessary
 
 v1.4 / 2021-06-22
 -----------------
