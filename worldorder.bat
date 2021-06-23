@@ -94,7 +94,7 @@ cls
 robocopy %src%\maps %temp%\maps E5*.map /nfl /ndl /njh /njs /nc /ns /np
 if exist %temp%\maps\E5L8A.map (
    del %temp%\maps\E5L8.map
-   ren "%temp%\maps\E5L8A.map" "E5L8.map"
+   ren %temp%\maps\E5L8A.map E5L8.map
 )
 ping -n 2 localhost >nul
 
