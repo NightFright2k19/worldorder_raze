@@ -4,7 +4,7 @@
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                    Version: 1.41 / June 22, 2021
+                                   Version: 1.5 / October 1, 2021
 
 
 ================================================================================================
@@ -42,7 +42,10 @@ I N S T A L L A T I O N
 1) Unpack this zipfile (worldorder_raze.zip) into your Raze installation folder, then
    launch worldorder.bat.
 
-2) You will be given two [Y]es/[N]o choices now:
+2) Choose your Steam (source) and Raze (target) directories. You can either enter the paths 
+   manually or use defaults (Steam: reads registry, Raze: current dir) by pressing "Enter". 
+
+3) You will be given two [Y]es/[N]o choices now:
    a) Choose whether you want to copy over duke3d.grp from World Tour and convert it to 
       Atomic Edition (recommended if you don't own Atomic Edition). There might be a UAC
       popup during this process which you need to confirm.
@@ -52,10 +55,10 @@ I N S T A L L A T I O N
       a UAC popup during this process which you need to confirm.
       The original map will be saved as E5L8B.map in case you want to revert manually later.
 
-3) You can (and should) uninstall World Tour on Steam at this point. Also the script
+4) You can (and should) uninstall World Tour on Steam at this point. Also the script
    file itself (worldorder.bat) is no longer needed.
 
-4) Launch Raze (raze.exe). In the selection menu, choose "Alien World Order (worldorder)".
+5) Launch Raze (raze.exe). In the selection menu, choose "Alien World Order (worldorder)".
 
 
 ================================================================================================
@@ -100,6 +103,13 @@ L I N K S
 ================================================================================================
 C H A N G E L O G
 ================================================================================================
+
+v1.5 / 2021-10-01
+-----------------
+> Can choose source and target dir again (pressing ENTER uses defaults)
+> Source/target dirs with name spaces now supported
+> Script now terminates if source/target dir is not found
+> Added case handling for bspatch.exe, 7z.exe or any bdiff patch not found
 
 v1.41 / 2021-06-23
 ------------------
