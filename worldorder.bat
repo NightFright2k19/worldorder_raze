@@ -3,8 +3,8 @@
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                       Author: NightFright ^| Version: 1.5
-@echo            ==========================================================              
+@echo                       Author: NightFright ^| Version: 1.51
+@echo            ==========================================================        
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
 @echo    Make sure that you have placed the script and all its associated files and
@@ -34,59 +34,47 @@ set dest=%raze%\data
 set temp=%dest%\temp
 
 if exist "%src%" (
-   if exist "%raze%\raze.exe" (
-      goto GrpPatch
-   ) else (
-      @echo RAZE.EXE *NOT* FOUND! Terminating script...
-      goto Terminate
-   )
+	if not exist "%raze%\raze.exe" (
+		set asset=RAZE.EXE
+		goto Terminate
+	)
 ) else (
-   @echo WORLD TOUR INSTALLATION *NOT* FOUND! Terminating script...
-   goto Terminate
+	set asset=WORLD TOUR INSTALLATION
+	goto Terminate
+)
+if not exist "%dest%\7z.exe" (
+	set asset=7Z.EXE
+	goto Terminate
 )
 
 :GrpPatch
-choice /c YN /n /m "<OPTION 1/2> Copy over duke3d.grp from World Tour and convert it to Atomic [Y/N]?"
-if errorlevel 2 goto MapPatch
-if errorlevel 1 goto Conversion1
+choice /c YN /n /m "<OPTION 1/2> Copy over DUKE3D.GRP from World Tour and convert it to Atomic [Y/N]?"
+if %errorlevel% equ 2 goto MapPatch
+if %errorlevel% equ 1 goto Conversion1
 
 :MapPatch
 choice /c YN /n /m "<OPTION 2/2> Apply patch for 'Prima Arena' (E5L8.map) to add cut sections [Y/N]?"
-if errorlevel 2 goto StartCopy
-if errorlevel 1 goto Conversion2
+if %errorlevel% equ 2 goto StartCopy
+if %errorlevel% equ 1 goto Conversion2
 
 :Conversion1
-cls
-@echo.
-if not exist "%dest%\bspatch.exe" (
-   goto BSPatchError
-)
-if not exist "%dest%\wtatomic.bdf" (
-   goto BDiffError
-)
-@echo Please confirm process 'bspatch.exe' if a UAC notification appears.
-ping -n 6 localhost >nul
+set ConversionMode=1
+goto ConversionCheck
+:Resume1
 robocopy "%src%" "%dest%" DUKE3D.GRP /nfl /ndl /njh /njs /nc /ns /np
 cd "%dest%"
 ren DUKE3D.GRP worldtour.grp
 bspatch worldtour.grp duke3d.grp wtatomic.bdf
 del "%dest%\worldtour.grp"
-@echo Duke3d.grp copied, Atomic patch applied.
+@echo DUKE3D.GRP copied, Atomic patch applied.
 ping -n 3 localhost >nul
 @echo.
 goto MapPatch
 
 :Conversion2
-cls
-@echo.
-if not exist "%dest%\bspatch.exe" (
-   goto BSPatchError
-)
-if not exist "%dest%\e5l8_uncut.bdf" (
-   goto BDiffError
-)
-@echo Please confirm process 'bspatch.exe' if a UAC notification appears.
-ping -n 6 localhost >nul
+set ConversionMode=2
+goto ConversionCheck
+:Resume2
 robocopy "%src%\maps" "%dest%" E5L8.map /nfl /ndl /njh /njs /nc /ns /np
 cd "%dest%"
 bspatch E5L8.map E5L8A.map e5l8_uncut.bdf
@@ -96,14 +84,31 @@ move E5L8.map "%temp%\maps\E5L8B.map" >nul
 ping -n 3 localhost >nul
 goto StartCopy
 
-:BSPatchError
-@echo BSPATCH.EXE *NOT* FOUND! Skipping conversion...
-goto ResumeScript
-:BDiffError
-@echo BDIFF PATCH *NOT* FOUND! Skipping conversion...
-:ResumeScript
+:ConversionCheck
+cls
+@echo.
+if not exist "%dest%\bspatch.exe" (
+	set patchfile=BSPATCH.EXE
+	goto PatchError
+)
+if %ConversionMode% equ 1 (
+	if not exist "%dest%\wtatomic.bdf" (
+		set patchfile=BDIFF PATCH
+		goto PatchError
+	)
+) else (
+	if not exist "%dest%\e5l8_uncut.bdf" (
+		set patchfile=BDIFF PATCH
+		goto PatchError
+	)
+)
+@echo Please confirm process 'bspatch.exe' if a UAC notification appears.
+ping -n 6 localhost >nul
+if %ConversionMode% equ 1 (goto Resume1) else (goto Resume2)
+
+:PatchError
+@echo %patchfile% *NOT* FOUND! Skipping conversion...
 ping -n 3 localhost >nul
-goto StartCopy
 
 :StartCopy
 cls
@@ -136,8 +141,8 @@ cls
 @echo STATUS: Copying maps...
 robocopy "%src%\maps" "%temp%\maps" E5*.map /nfl /ndl /njh /njs /nc /ns /np
 if exist "%temp%\maps\E5L8A.map" (
-   del "%temp%\maps\E5L8.map"
-   ren "%temp%\maps\E5L8A.map" E5L8.map
+	del "%temp%\maps\E5L8.map"
+	ren "%temp%\maps\E5L8A.map" E5L8.map
 )
 ping -n 2 localhost >nul
 
@@ -170,11 +175,6 @@ cls
 @echo.
 @echo PROGRESS: ▓▓▓▓▓▓▓▓▒▒  80%%
 @echo STATUS: Creating data file "worldorder.grp"...
-if not exist "%dest%\7z.exe" (
-   @echo.
-   @echo 7Z.EXE *NOT* FOUND! Terminating script...
-   goto Terminate
-)
 cd "%dest%"
 7z a -mx0 worldorder.zip "%temp%\*" >nul
 ren worldorder.zip worldorder.grp
@@ -193,6 +193,10 @@ cls
 @echo.
 @echo PROGRESS: ▓▓▓▓▓▓▓▓▓▓ 100%%
 @echo STATUS: ALL DONE! Closing script...
+goto End
 
 :Terminate
+@echo %asset% *NOT* FOUND! Terminating script...
+
+:End
 ping -n 4 localhost >nul
