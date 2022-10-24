@@ -3,7 +3,7 @@
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                       Author: NightFright ^| Version: 1.51
+@echo                       Author: NightFright ^| Version: 1.52
 @echo            ==========================================================        
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -78,6 +78,7 @@ goto ConversionCheck
 robocopy "%src%\maps" "%dest%" E5L8.map /nfl /ndl /njh /njs /nc /ns /np
 cd "%dest%"
 bspatch E5L8.map E5L8A.map e5l8_uncut.bdf
+md "%temp%\maps" >nul
 move E5L8A.map "%temp%\maps" >nul
 move E5L8.map "%temp%\maps\E5L8B.map" >nul
 @echo E5L8 patch applied. Backup saved as E5L8B.map.
