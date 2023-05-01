@@ -3,7 +3,7 @@
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                       Author: NightFright ^| Version: 1.52
+@echo                       Author: NightFright ^| Version: 1.53
 @echo            ==========================================================        
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -44,6 +44,10 @@ if exist "%src%" (
 )
 if not exist "%dest%\7z.exe" (
 	set asset=7Z.EXE
+	goto Terminate
+)
+if not exist "%dest%\7z.dll" (
+	set asset=7Z.DLL
 	goto Terminate
 )
 
@@ -188,6 +192,7 @@ cls
 rmdir "%temp%" /s /q
 del "%dest%\*.exe"
 del "%dest%\*.bdf"
+del "%dest%\7z.dll"
 ping -n 2 localhost >nul
 
 cls
