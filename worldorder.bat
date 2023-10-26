@@ -1,4 +1,8 @@
-@echo off & cls && "%__APPDIR__%chcp.com" 65001 >nul
+if not exist "%__APPDIR__%chcp.com" (
+	set asset=CHCP.COM
+	goto Terminate
+) else (@echo off & cls && "%__APPDIR__%chcp.com" 65001 >nul)
+
 @echo.
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
@@ -42,12 +46,12 @@ if exist "%src%" (
 	set asset=WORLD TOUR INSTALLATION
 	goto Terminate
 )
-if not exist "%dest%\7z.exe" (
-	set asset=7Z.EXE
+if not exist "%dest%\7za.exe" (
+	set asset=7ZA.EXE
 	goto Terminate
 )
-if not exist "%dest%\7z.dll" (
-	set asset=7Z.DLL
+if not exist "%dest%\7za.dll" (
+	set asset=7ZA.DLL
 	goto Terminate
 )
 
@@ -181,7 +185,7 @@ cls
 @echo PROGRESS: ▓▓▓▓▓▓▓▓▒▒  80%%
 @echo STATUS: Creating data file "worldorder.grp"...
 cd "%dest%"
-7z a -mx0 worldorder.zip "%temp%\*" >nul
+7za a -mx0 worldorder.zip "%temp%\*" >nul
 ren worldorder.zip worldorder.grp
 ping -n 2 localhost >nul
 
@@ -192,7 +196,7 @@ cls
 rmdir "%temp%" /s /q
 del "%dest%\*.exe"
 del "%dest%\*.bdf"
-del "%dest%\7z.dll"
+del "%dest%\7za.dll"
 ping -n 2 localhost >nul
 
 cls

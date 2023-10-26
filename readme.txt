@@ -4,7 +4,7 @@
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                     Version: 1.53 / May 1, 2023
+                                    Version: 1.54 / Oct 26, 2023
 
 
 ================================================================================================
@@ -84,7 +84,7 @@ C R E D I T S
   Timotheus Pokorra (https://www.pokorra.de/coding/bsdiff.html)
   Original code: Colin Percival
 
-> 7-ZIP COMPRESSION TOOL (7Z.EXE)
+> 7-ZIP COMPRESSION TOOL (7ZA.EXE)
   Igor Pavlov (http://www.7-zip.org)
 
 > ALIEN WORLD ORDER STEAM EXTRACTION SCRIPT
@@ -103,6 +103,11 @@ L I N K S
 ================================================================================================
 C H A N G E L O G
 ================================================================================================
+
+v1.54 / 2023-10-26
+------------------
+> Added abort condition in case chcp.com is not found
+> 7za.exe updated to latest version (v23.01)
 
 v1.53 / 2023-05-01
 ------------------
