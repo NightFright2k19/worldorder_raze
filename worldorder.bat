@@ -7,7 +7,7 @@ if not exist "%__APPDIR__%chcp.com" (
 @echo            ==========================================================
 @echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 @echo            ==========================================================
-@echo                       Author: NightFright ^| Version: 1.53
+@echo                       Author: NightFright ^| Version: 1.54
 @echo            ==========================================================        
 @echo.
 @echo      This script creates a standalone copy of "Alien World Order" for Raze.
