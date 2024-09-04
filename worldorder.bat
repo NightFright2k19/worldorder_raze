@@ -7,7 +7,7 @@ echo.
 echo            ==========================================================
 echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 echo            ==========================================================
-echo                       Author: NightFright ^| Version: 1.54
+echo                       Author: NightFright ^| Version: 1.55
 echo            ==========================================================        
 echo.
 echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -48,10 +48,6 @@ if exist "%src%" (
 )
 if not exist "%dest%\7za.exe" (
 	set asset=7ZA.EXE
-	goto Terminate
-)
-if not exist "%dest%\7za.dll" (
-	set asset=7ZA.DLL
 	goto Terminate
 )
 
@@ -196,7 +192,6 @@ echo STATUS: Deleting temporary files...
 rmdir "%temp%" /s /q
 del "%dest%\*.exe"
 del "%dest%\*.bdf"
-del "%dest%\7za.dll"
 ping -n 2 localhost >nul
 
 cls
