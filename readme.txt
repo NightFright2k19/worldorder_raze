@@ -4,7 +4,7 @@
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                    Version: 1.55 / Sep 4, 2024
+                                    Version: 1.6 / Oc 13, 2025
 
 
 ================================================================================================
@@ -45,14 +45,18 @@ I N S T A L L A T I O N
 2) Choose your Steam (source) and Raze (target) directories. You can either enter the paths 
    manually or use defaults (Steam: reads registry, Raze: current dir) by pressing "Enter". 
 
-3) You will be given two [Y]es/[N]o choices now:
+3) You will be given two [Y]es/[N]o choices now.
+   There might be UAC popups during this process which you need to confirm:
    a) Choose whether you want to copy over duke3d.grp from World Tour and convert it to 
-      Atomic Edition (recommended if you don't own Atomic Edition). There might be a UAC
-      popup during this process which you need to confirm.
+      Atomic Edition (recommended if you don't own Atomic Edition).
       In case you have duke3d.grp from Atomic, be sure to copy it to the "data" subdir.
-   b) Choose whether you want to patch the original "Prima Arena" map (E5L8) to make
-      some sections accessible which were cut from the original release. There might be 
-      a UAC popup during this process which you need to confirm.
+   b) Choose whether you want to replace the original "Golden Carnage" map (E5L6) with one
+      that supports TROR (True Room Over Room). Note that this feature is best supported
+      by EDuke32 in Polymer rendering mode. Other ports and/or renderers may suffer from
+      visual glitches and performance issues.
+      The original map will be saved as E5L6B.map in case you want to revert manually later.
+   c) Choose whether you want to patch the original "Prima Arena" map (E5L8) to make
+      some sections accessible which were cut from the original release.
       The original map will be saved as E5L8B.map in case you want to revert manually later.
 
 4) You can (and should) uninstall World Tour on Steam at this point. Also the script
@@ -70,6 +74,9 @@ C R E D I T S
 
 > ALIEN WORLD ORDER MAPS
   (C) 2016 Allen Blum, Richard "Levelord" Gray, Randy Pitchford
+
+> GOLDEN GATE TROR
+  pepsodent (https://forums.duke4.net/topic/12795-golden-carnage-tror-edition)
 
 > PRIMA ARENA UNCUT
   Ness (https://steamcommunity.com/sharedfiles/filedetails/?id=781120926)
@@ -103,6 +110,11 @@ L I N K S
 ================================================================================================
 C H A N G E L O G
 ================================================================================================
+
+v1.6 / 2025-10-13
+-----------------
+> Added option to install TROR version of E5L6
+> 7za.exe updated to latest version (v25.01)
 
 v1.55 / 2024-09-04
 ------------------

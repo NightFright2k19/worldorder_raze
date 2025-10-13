@@ -7,7 +7,7 @@ echo.
 echo            ==========================================================
 echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 echo            ==========================================================
-echo                       Author: NightFright ^| Version: 1.55
+echo                       Author: NightFright ^| Version: 1.6
 echo            ==========================================================        
 echo.
 echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -25,11 +25,11 @@ echo.
 set steam=%SteamPath64%%SteamPath32%
 set steam=%steam:\uninstall.exe=%
 set raze=%cd%
-echo Enter your Steam source directory or press [ENTER] to autodetect (%steam%):
+echo Enter Steam source directory or press [ENTER] to autodetect (%steam%):
 set /p steam=
 echo STEAM DIRECTORY SET!
 echo.
-echo Enter your Raze target directory or press [ENTER] to use current dir (%cd%):
+echo Enter Raze target directory or press [ENTER] to use current dir (%cd%):
 set /p raze=
 echo RAZE DIRECTORY SET!
 echo.
@@ -52,14 +52,19 @@ if not exist "%dest%\7za.exe" (
 )
 
 :GrpPatch
-choice /c YN /n /m "<OPTION 1/2> Copy over DUKE3D.GRP from World Tour and convert it to Atomic [Y/N]?"
-if %errorlevel% equ 2 goto MapPatch
+choice /c YN /n /m "<OPTION 1/3> Copy over DUKE3D.GRP from World Tour and convert it to Atomic [Y/N]?"
+if %errorlevel% equ 2 goto MapPatch1
 if %errorlevel% equ 1 goto Conversion1
 
-:MapPatch
-choice /c YN /n /m "<OPTION 2/2> Apply patch for 'Prima Arena' (E5L8.map) to add cut sections [Y/N]?"
-if %errorlevel% equ 2 goto StartCopy
+:MapPatch1
+choice /c YN /n /m "<OPTION 2/3> Apply patch for E5L6 'Golden Carnage' to add TROR feature [Y/N]?"
+if %errorlevel% equ 2 goto MapPatch2
 if %errorlevel% equ 1 goto Conversion2
+
+:MapPatch2
+choice /c YN /n /m "<OPTION 3/3> Apply patch for E5L8 'Prima Arena' to add cut sections [Y/N]?"
+if %errorlevel% equ 2 goto StartCopy
+if %errorlevel% equ 1 goto Conversion3
 
 :Conversion1
 set ConversionMode=1
@@ -73,12 +78,26 @@ del "%dest%\worldtour.grp"
 echo DUKE3D.GRP copied, Atomic patch applied.
 ping -n 3 localhost >nul
 echo.
-goto MapPatch
+goto MapPatch1
 
 :Conversion2
 set ConversionMode=2
 goto ConversionCheck
 :Resume2
+robocopy "%src%\maps" "%dest%" E5L6.map /nfl /ndl /njh /njs /nc /ns /np
+cd "%dest%"
+bspatch E5L6.map E5L6A.map e5l6_tror.bdf
+md "%temp%\maps" >nul
+move E5L6A.map "%temp%\maps" >nul
+move E5L6.map "%temp%\maps\E5L6B.map" >nul
+echo E5L6 patch applied. Backup saved as E5L6B.map.
+ping -n 3 localhost >nul
+goto MapPatch2
+
+:Conversion3
+set ConversionMode=3
+goto ConversionCheck
+:Resume3
 robocopy "%src%\maps" "%dest%" E5L8.map /nfl /ndl /njh /njs /nc /ns /np
 cd "%dest%"
 bspatch E5L8.map E5L8A.map e5l8_uncut.bdf
@@ -98,18 +117,27 @@ if not exist "%dest%\bspatch.exe" (
 )
 if %ConversionMode% equ 1 (
 	if not exist "%dest%\wtatomic.bdf" (
-		set patchfile=BDIFF PATCH
+		set patchfile=ATOMIC BDIFF PATCH
 		goto PatchError
 	)
-) else (
+)
+if %ConversionMode% equ 2 (
+	if not exist "%dest%\e5l6_tror.bdf" (
+		set patchfile=E5L6 BDIFF PATCH
+		goto PatchError
+	)
+)
+if %ConversionMode% equ 3 (
 	if not exist "%dest%\e5l8_uncut.bdf" (
-		set patchfile=BDIFF PATCH
+		set patchfile=E5L8 BDIFF PATCH
 		goto PatchError
 	)
 )
 echo Please confirm process 'bspatch.exe' if a UAC notification appears.
 ping -n 6 localhost >nul
-if %ConversionMode% equ 1 (goto Resume1) else (goto Resume2)
+if %ConversionMode% equ 3 (goto Resume3)
+if %ConversionMode% equ 2 (goto Resume2)
+if %ConversionMode% equ 1 (goto Resume1)
 
 :PatchError
 echo %patchfile% *NOT* FOUND! Skipping conversion...
@@ -145,6 +173,10 @@ echo.
 echo PROGRESS: ▓▓▓▓▒▒▒▒▒▒  40%%
 echo STATUS: Copying maps...
 robocopy "%src%\maps" "%temp%\maps" E5*.map /nfl /ndl /njh /njs /nc /ns /np
+if exist "%temp%\maps\E5L6A.map" (
+	del "%temp%\maps\E5L6.map"
+	ren "%temp%\maps\E5L6A.map" E5L6.map
+)
 if exist "%temp%\maps\E5L8A.map" (
 	del "%temp%\maps\E5L8.map"
 	ren "%temp%\maps\E5L8A.map" E5L8.map
