@@ -1,7 +1,7 @@
 
                                 =====================================
                                  ALIEN WORLD ORDER EXTRACTION SCRIPT 
-				    FOR DUKE NUKEM 3D: WORLD TOUR
+				                    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
                                     Version: 1.6 / Oc 13, 2025
