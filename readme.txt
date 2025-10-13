@@ -45,7 +45,7 @@ I N S T A L L A T I O N
 2) Choose your Steam (source) and Raze (target) directories. You can either enter the paths 
    manually or use defaults (Steam: reads registry, Raze: current dir) by pressing "Enter". 
 
-3) You will be given two [Y]es/[N]o choices now.
+3) You will be given three [Y]es/[N]o choices now.
    There might be UAC popups during this process which you need to confirm:
    a) Choose whether you want to copy over duke3d.grp from World Tour and convert it to 
       Atomic Edition (recommended if you don't own Atomic Edition).
