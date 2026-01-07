@@ -1,6 +1,6 @@
 
                                 =====================================
-                                 ALIEN WORLD ORDER EXTRACTION SCRIPT 
+                                 ALIEN WORLD ORDER EXTRACTION SCRIPT
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
