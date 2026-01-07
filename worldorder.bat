@@ -7,7 +7,7 @@ echo.
 echo            ==========================================================
 echo                DUKE NUKEM 3D: ALIEN WORLD ORDER Extraction Script
 echo            ==========================================================
-echo                       Author: NightFright ^| Version: 1.6
+echo                       Author: NightFright ^| Version: 1.7
 echo            ==========================================================        
 echo.
 echo      This script creates a standalone copy of "Alien World Order" for Raze.
@@ -165,7 +165,7 @@ cls
 echo.
 echo PROGRESS: ▓▓▓▒▒▒▒▒▒▒  30%%
 echo STATUS: Copying skyboxes...
-robocopy "%src%\textures\skybox" "%temp%\skyboxes" /nfl /ndl /njh /njs /nc /ns /np /s
+robocopy "%src%\textures\skybox" "%temp%\textures\skybox" /nfl /ndl /njh /njs /nc /ns /np /s
 ping -n 2 localhost >nul
 
 cls
@@ -205,7 +205,7 @@ del "%temp%\tiles009.art"
 del "%temp%\music\E5L7_PluckYouPartTwo.ogg"
 del "%temp%\sound\VO_E5L2_Duke_BeHere - ALT.ogg"
 del "%temp%\sound\Wep_Flamethrower_Start.ogg"
-for %%a in ("%temp%\skyboxes\BIGORBIT1" "%temp%\skyboxes\CLOUDYOCEAN" "%temp%\skyboxes\LA" "%temp%\skyboxes\MOONSKY1" "%temp%\skyboxes\REDSKY2") do rd /s /q "%%~a"
+for %%a in ("%temp%\textures\skybox\BIGORBIT1" "%temp%\textures\skybox\CLOUDYOCEAN" "%temp%\textures\skybox\LA" "%temp%\textures\skybox\MOONSKY1" "%temp%\textures\skybox\REDSKY2") do rd /s /q "%%~a"
 ping -n 2 localhost >nul
 
 cls

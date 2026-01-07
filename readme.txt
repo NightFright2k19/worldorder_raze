@@ -1,10 +1,10 @@
 
                                 =====================================
                                  ALIEN WORLD ORDER EXTRACTION SCRIPT 
-				                    FOR DUKE NUKEM 3D: WORLD TOUR
+				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                     Version: 1.6 / Oc 13, 2025
+                                     Version: 1.7 / Jan 7, 2026
 
 
 ================================================================================================
@@ -110,6 +110,11 @@ L I N K S
 ================================================================================================
 C H A N G E L O G
 ================================================================================================
+
+v1.7 / 2026-01-07
+-----------------
+> Changed script so that skyboxes are copied to "textures\skybox" instead of "skyboxes"
+> Removed engine\engine.def and skyboxes\skyboxes.def (no longer needed, handled by Raze)
 
 v1.6 / 2025-10-13
 -----------------
