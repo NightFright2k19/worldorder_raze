@@ -1,10 +1,10 @@
 
                                 =====================================
-                                 ALIEN WORLD ORDER EXTRACTION SCRIPT
+                                 ALIEN WORLD ORDER EXTRACTION SCRIPT 
 				    FOR DUKE NUKEM 3D: WORLD TOUR
                                            By NightFright
                                 =====================================
-                                     Version: 1.7 / Jan 7, 2026
+                                     Version: 1.7 / Jan 8, 2026
 
 
 ================================================================================================
@@ -111,8 +111,19 @@ L I N K S
 C H A N G E L O G
 ================================================================================================
 
-v1.7 / 2026-01-07
+v1.7 / 2026-01-08
 -----------------
+> Improved script robustness:
+  - Added Delayed Expansion (avoids code breaking in edge cases)
+  - Improve Steam path detection (prefer 64-bit, fallback to 32-bit otherwise)
+  - Fix user input overwriting detected paths incorrectly
+  - Error checking for cd "%dest%"
+  - Fix fragile choice errorlevel logic
+  - Quote all set commands
+  - Use pushd/popd instead of cd (prevents directory state corruption)
+  - Ensure %temp% exists before use
+  - Replace ping delays with timeout (ping localhost is a hack and slower)
+  - Use only one robocopy option block
 > Changed script so that skyboxes are copied to "textures\skybox" instead of "skyboxes"
 > Removed engine\engine.def and skyboxes\skyboxes.def (no longer needed, handled by Raze)
 
